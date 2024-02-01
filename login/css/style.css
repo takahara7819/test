@@ -17,7 +17,7 @@ a {
   border-style: none;
   line-height: 3.2em;
 }
-p{
+p {
   margin: 0;
 }
 /*-------------------------
@@ -53,4 +53,11 @@ button {
   text-align: center;
   border: none;
   border-radius: 3px;
+}
+/*-------------------------
+  jsで表示
+-------------------------*/
+#msgId,
+#msgPs {
+  color: red;
 }
