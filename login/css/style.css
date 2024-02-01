@@ -1,0 +1,56 @@
+/*-------------------------
+初期値
+-------------------------*/
+@charset "UTF-8";
+body {
+  font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN",
+    "Hiragino Sans", Meiryo, sans-serif;
+  color: #333;
+  line-height: 2;
+  font-feature-settings: "palt";
+  text-size-adjust: 100%;
+  background-color: #2067ca;
+}
+
+a {
+  text-decoration: none;
+  border-style: none;
+  line-height: 3.2em;
+}
+p{
+  margin: 0;
+}
+/*-------------------------
+  main
+-------------------------*/
+.container {
+  background-color: #fff;
+  max-width: 500px;
+  margin: 10px auto;
+  padding: 5px 10px;
+  text-align: center;
+}
+.login {
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  padding: 20px;
+}
+.login h1 {
+  margin: 40px;
+}
+.login input {
+  display: flex;
+  width: 100%;
+  margin-bottom: 10px;
+  border: 1px solid #666;
+  background-color: #9cb6e6;
+  border-radius: 3px;
+}
+button {
+  width: 100%;
+  background-color: #41a941;
+  color: #fff;
+  text-align: center;
+  border: none;
+  border-radius: 3px;
+}
