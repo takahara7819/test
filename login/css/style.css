@@ -27,27 +27,29 @@ p {
   background-color: #fff;
   max-width: 500px;
   margin: 10px auto;
-  padding: 5px 10px;
-  text-align: center;
+  padding: 10px;
+  border-radius: 3px;
 }
-.login {
+.subcontainer {
   border: 1px solid #ccc;
   border-radius: 3px;
   padding: 20px;
 }
-.login h1 {
+.subcontainer h1 {
+  text-align: center;
   margin: 40px;
 }
-.login input {
+.subcontainer input {
   display: flex;
   width: 100%;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   border: 1px solid #666;
   background-color: #9cb6e6;
   border-radius: 3px;
 }
 button {
   width: 100%;
+  margin-top: 10px;
   background-color: #41a941;
   color: #fff;
   text-align: center;
@@ -55,9 +57,16 @@ button {
   border-radius: 3px;
 }
 /*-------------------------
-  jsで表示
+  ログインエラー表示
 -------------------------*/
 #msgId,
 #msgPs {
   color: red;
+}
+/*-------------------------
+  signIn
+-------------------------*/
+form label{
+  font-weight: bold;
+  margin-bottom: -5px;
 }

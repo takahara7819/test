@@ -1,3 +1,4 @@
+// lndex
 let userId = document.getElementById("id");
 let userPass = document.getElementById("pass");
 let msgId = document.getElementById("msgId");
@@ -25,6 +26,11 @@ function btn() {
   }
 
   if (searchId.match(/^[ -~]*$/) && searchPs.match(/^[ -~]*$/)) {
-    window.location.href = "second.html";
+    window.location.href = "../signin.html";
   }
+}
+
+//sign
+function sainUp() {
+  
 }
