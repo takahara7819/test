@@ -11,14 +11,20 @@ function btn() {
   if (!searchId.match(/^[ -~]*$/)) {
     userId.style.backgroundColor = "red";
     msgId.textContent = "IDへは半角英数字記号のみで記入して下さい";
-    return;
+  } else {
+    userId.style.backgroundColor = "#9cb6e6";
+    msgId.textContent = "";
   }
 
   if (!searchPs.match(/^[ -~]*$/)) {
     userPass.style.backgroundColor = "red";
     msgPs.textContent = "IDへは半角英数字記号のみで記入して下さい";
-    return;
   } else {
+    userPass.style.backgroundColor = "#9cb6e6";
+    msgPs.textContent = "";
+  }
+
+  if (searchId.match(/^[ -~]*$/) && searchPs.match(/^[ -~]*$/)) {
     window.location.href = "second.html";
   }
 }
