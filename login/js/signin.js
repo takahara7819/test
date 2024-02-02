@@ -1,34 +1,31 @@
-let name = document.getElementsByName("name");
-let kana = document.getElementsByName("kana");
-let birthdate = document.getElementsByName("birthdate");
-let date = birthdate[0].valueAsDate;
-let age = document.getElementsByName("age");
-let address = document.getElementsByName("address");
-let tel = document.getElementsByName("tel");
-let Department = document.getElementsByName("Department");
-
 function signUp() {
   let errText = document.getElementsByClassName("msg");
 
   // 名前
-
+  let name = document.getElementsByName("name");
   if (name[0].value.match(/^[ -~]*$/)) {
     name[0].style.backgroundColor = "red";
     errText[0].textContent = "記号、数字NG";
   } else {
     name[0].style.backgroundColor = "#9cb6e6";
     errText[0].textContent = "";
+    let a = 1;
   }
+
   // 仮名
+  let kana = document.getElementsByName("kana");
   if (!kana[0].value.match(/^[ぁ-んー　]+$/)) {
     kana[0].style.backgroundColor = "red";
     errText[1].textContent = "ひらがなのみ";
   } else {
     kana[0].style.backgroundColor = "#9cb6e6";
     errText[1].textContent = "";
+    let b = 1;
   }
 
   // 生年月日
+  let birthdate = document.getElementsByName("birthdate");
+  let date = birthdate[0].valueAsDate;
 
   let year = date.getFullYear();
   let month = date.getMonth() + 1;
@@ -47,49 +44,59 @@ function signUp() {
     }
     return nowAge;
   }
-  // console.log(getAge(test3));
 
   // 年齢
+  let age = document.getElementsByName("age");
   age[0].value = getAge(test3);
 
-  if (age[0].value.match(/^[0-9]+$/)) {
+  if (!age[0].value.match(/^[0-9]+$/)) {
     age[0].style.backgroundColor = "red";
     errText[3].textContent = "数字のみ";
   } else {
     age[0].style.backgroundColor = "#9cb6e6";
     errText[3].textContent = "";
+    let c = 1;
   }
+
   // 住所
+  let address = document.getElementsByName("address");
   if (!address[0].value.match(/^[ -~]*$/)) {
     address[0].style.backgroundColor = "#9cb6e6";
     errText[4].textContent = "";
+    let d = 1;
   } else {
     address[0].style.backgroundColor = "red";
     errText[4].textContent = "記号NG";
   }
+
   // 電話番号
+  let tel = document.getElementsByName("tel");
   if (!tel[0].value.match(/^[0-9]+$/)) {
     tel[0].style.backgroundColor = "red";
     errText[5].textContent = "数字のみ";
   } else {
     tel[0].style.backgroundColor = "#9cb6e6";
     errText[5].textContent = "";
+    let d = 1;
   }
+
   // 所属部署
   let Department = document.getElementsByName("Department");
-
   if (!Department[0].value.match(/^[ -~]*$/)) {
     Department[0].style.backgroundColor = "#9cb6e6";
     errText[7].textContent = "";
+    let e = 1;
   } else {
     Department[0].style.backgroundColor = "red";
     errText[7].textContent = "記号、数字NG";
   }
+
+  // tableに記入
+  if (a == 1 && b == 1 && c == 1 && d == 1 && e == 1) {
+    let member = document.getElementById("member");
+    member.insertAdjacentHTML(
+      "beforeend",
+      `<tr><td>${name[0].value}</td><td>${kana[0].valu}</td><td>${test3}</td><td>${age[0].value}</td><td>${address[0].value}</td><td>${tel[0].value}</td><td>${Department[0].value}</td></tr>`
+    );
+  }
 }
-
-//一覧に追加
-// let member = document.getElementById("member");
-// if () {
-
-//   member.insertAdjacentHTML("beforeend", `<tr></tr>`);
-// }
