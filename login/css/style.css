@@ -17,39 +17,39 @@ a {
   border-style: none;
   line-height: 3.2em;
 }
-p {
-  margin: 0;
-}
 /*-------------------------
   main
 -------------------------*/
+h1 {
+  text-align: center;
+  margin: 40px;
+}
+
 .container {
   background-color: #fff;
-  max-width: 500px;
+  max-width: 1100px;
   margin: 10px auto;
   padding: 10px;
   border-radius: 3px;
 }
-.subcontainer {
+.formcontainer {
+  max-width: 100%;
   border: 1px solid #ccc;
   border-radius: 3px;
   padding: 20px;
 }
-.subcontainer h1 {
-  text-align: center;
-  margin: 40px;
-}
-.subcontainer input {
-  display: flex;
-  width: 100%;
-  margin-bottom: 15px;
+.formcontainer input {
+  display: block;
+  width: 500px;
+  margin: 50px auto;
   border: 1px solid #666;
-  background-color: #9cb6e6;
+  background-color: #c9dcff;
   border-radius: 3px;
 }
 button {
-  width: 100%;
-  margin-top: 10px;
+  display: block;
+  width: 300px;
+  margin: 10px auto;
   background-color: #41a941;
   color: #fff;
   text-align: center;
@@ -57,16 +57,43 @@ button {
   border-radius: 3px;
 }
 /*-------------------------
-  ログインエラー表示
+  jsエラー表示
 -------------------------*/
 #msgId,
-#msgPs {
+#msgPs,
+.msg {
+  margin: -20px auto 10px auto;
   color: red;
 }
 /*-------------------------
+  一覧画面
+-------------------------*/
+table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  text-align: center;
+}
+th,
+td {
+  border: 1px solid #ccc;
+}
+th {
+  background-color: #eee;
+  padding: 5px;
+}
+
+/*-------------------------
   signIn
 -------------------------*/
-form label{
+label {
   font-weight: bold;
-  margin-bottom: -5px;
+}
+.formcontainer label input {
+  margin: 0 auto 30px auto;
+}
+section.container {
+  display: flex;
+  justify-content: space-around;
+  gap: 6px;
 }

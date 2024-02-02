@@ -4,28 +4,73 @@
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>一覧ページ</title>
+            <title>一覧画面</title>
             <link rel="icon" href="images/favicon.png" type="image/png">
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.0/css/bootstrap-reboot.min.css">
             <link rel="stylesheet" href="css/style.css">
         </head>
     <body>
         <main class="container">
-            <section class="subcontainer">
-                <h1>社員新規登録画面</h1>
-                <form action="" method="post" novalidate>
-                    <label>名前</label><input type="text" neme="name">
-                    <label>仮名</label><input type="text" neme="kamei">
-                    <label>生年月日</label><input type="date" neme="birthday">
-                    <label>年齢</label><input type="text" neme="age">
-                    <label>住所</label><input type="text" neme="address">
-                    <label>電話番号</label><input type="text" neme="tel">
-                    <label>入社日</label><input type="date" neme="day">
-                    <label>所属部署</label><input type="text" neme="Department">
-                    <button onclick="signUp()">登録</button>
-                </form>
+            <h1>一覧画面</h1>
+            <table id="member">
+                <tr>
+                    <th>IDナンバー</th>
+                    <th>社員名</th>
+                    <th>仮名</th>
+                    <th>生年月日</th>
+                    <th>年齢</th>
+                    <th>入社日</th>
+                    <th>住所</th>
+                    <th>電話番号</th>
+                    <th>所属部署</th>
+                </tr>
+                <tr>
+                    <td>12345</td>
+                    <td>田中太郎</td>
+                    <td>たなかたろう</td>
+                    <td>0000/0/0</td>
+                    <td>23</td>
+                    <td>0000/0/0</td>
+                    <td>ダミー</td>
+                    <td>090-xxxx-xxxx</td>
+                    <td>ダミー</td>
+                </tr>
+                <tr>
+                    <td>12345</td>
+                    <td>田中太郎</td>
+                    <td>たなかたろう</td>
+                    <td>0000/0/0</td>
+                    <td>23</td>
+                    <td>0000/0/0</td>
+                    <td>ダミー</td>
+                    <td>090-xxxx-xxxx</td>
+                    <td>ダミー</td>
+                </tr>
+            </table>
+            <h1>社員新規登録画面</h1>
+            <section class="container">
+                <section class="formcontainer">
+                    <label>名前<input type="text" name="name"></label>
+                    <div class="msg"></div>
+                    <label>仮名<input type="text" name="kana"></label>
+                    <div class="msg"></div>
+                    <label>生年月日<input type="date" name="birthdate" value=""></label>
+                    <div class="msg"></div>
+                    <label>年齢<input type="text" name="age"></label>
+                    <div class="msg"></div>
+                </section>
+                <section class="formcontainer">
+                    <label>住所<input type="text" name="address"></label>
+                    <div class="msg"></div>
+                    <label>電話番号<input type="text" name="tel"></label>
+                    <div class="msg"></div>
+                    <label>入社日<input type="date" name="day"></label>
+                    <div class="msg"></div>
+                    <label>所属部署<input type="text" name="Department"></label>
+                    <div class="msg"></div>
+                </section>
             </section>
-        </main>
-        <script src="js/main.js"></script>
+            <button onclick="signUp()">登録</button>
+            <script src="js/signin.js"></script>
     </body>
 </html>
