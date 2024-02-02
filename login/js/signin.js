@@ -1,37 +1,51 @@
+// 名前
+let name = document.getElementsByName("name");
+// 仮名
+let kana = document.getElementsByName("kana");
+// 生年月日
+let birthdate = document.getElementsByName("birthdate");
+let date = birthdate[0].valueAsDate;
+// 生年月日データ分け
+let year = date.getFullYear();
+let month = date.getMonth() + 1;
+let day = date.getDate();
+// 生年月日(年月日表示)
+let test3 = year + "年" + month + "月" + day + "日";
+// 年齢
+let age = document.getElementsByName("age");
+// 住所
+let address = document.getElementsByName("address");
+// 電話番号
+let tel = document.getElementsByName("tel");
+// 所属部署
+let Department = document.getElementsByName("Department");
+
+//ブーリアンチェック用
+let isChek = true;
+
 function signUp() {
   let errText = document.getElementsByClassName("msg");
 
-  // 名前
-  let name = document.getElementsByName("name");
+  //名前バリデーションチェック
   if (name[0].value.match(/^[ -~]*$/)) {
     name[0].style.backgroundColor = "red";
     errText[0].textContent = "記号、数字NG";
+    isChek = false;
   } else {
     name[0].style.backgroundColor = "#9cb6e6";
     errText[0].textContent = "";
     let a = 1;
   }
 
-  // 仮名
-  let kana = document.getElementsByName("kana");
+  // 仮名バリデーションチェック
   if (!kana[0].value.match(/^[ぁ-んー　]+$/)) {
     kana[0].style.backgroundColor = "red";
     errText[1].textContent = "ひらがなのみ";
+    isChek = false;
   } else {
     kana[0].style.backgroundColor = "#9cb6e6";
     errText[1].textContent = "";
-    let b = 1;
   }
-
-  // 生年月日
-  let birthdate = document.getElementsByName("birthdate");
-  let date = birthdate[0].valueAsDate;
-
-  let year = date.getFullYear();
-  let month = date.getMonth() + 1;
-  let day = date.getDate();
-
-  let test3 = year + "年" + month + "月" + day + "日";
 
   //年齢計算
   function getAge(test3) {
@@ -44,55 +58,50 @@ function signUp() {
     }
     return nowAge;
   }
-
-  // 年齢
-  let age = document.getElementsByName("age");
   age[0].value = getAge(test3);
 
+  //年齢バリデーションチェック
   if (!age[0].value.match(/^[0-9]+$/)) {
     age[0].style.backgroundColor = "red";
     errText[3].textContent = "数字のみ";
+    isChek = false;
   } else {
     age[0].style.backgroundColor = "#9cb6e6";
     errText[3].textContent = "";
-    let c = 1;
   }
 
-  // 住所
-  let address = document.getElementsByName("address");
+  //住所バリデーションチェック
   if (!address[0].value.match(/^[ -~]*$/)) {
     address[0].style.backgroundColor = "#9cb6e6";
     errText[4].textContent = "";
-    let d = 1;
   } else {
     address[0].style.backgroundColor = "red";
     errText[4].textContent = "記号NG";
+    isChek = false;
   }
 
-  // 電話番号
-  let tel = document.getElementsByName("tel");
+  //電話番号バリデーションチェック
   if (!tel[0].value.match(/^[0-9]+$/)) {
     tel[0].style.backgroundColor = "red";
     errText[5].textContent = "数字のみ";
+    isChek = false;
   } else {
     tel[0].style.backgroundColor = "#9cb6e6";
     errText[5].textContent = "";
-    let d = 1;
   }
 
-  // 所属部署
-  let Department = document.getElementsByName("Department");
+  //所属バリデーションチェック
   if (!Department[0].value.match(/^[ -~]*$/)) {
     Department[0].style.backgroundColor = "#9cb6e6";
     errText[7].textContent = "";
-    let e = 1;
   } else {
     Department[0].style.backgroundColor = "red";
     errText[7].textContent = "記号、数字NG";
+    isChek = false;
   }
 
   // tableに記入
-  if (a == 1 && b == 1 && c == 1 && d == 1 && e == 1) {
+  if (isChek) {
     let member = document.getElementById("member");
     member.insertAdjacentHTML(
       "beforeend",
