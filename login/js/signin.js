@@ -73,7 +73,9 @@ function signUp() {
   }
 
   //住所バリデーションチェック
-  if (!address[0].value.match(/^[!"#$%&'()\*\+\-\.,\/:;<=>?＠\[\\\]^_`{|}~]*$/i)) {
+  if (
+    !address[0].value.match(/^[!"#$%&'()\*\+\-\.,\/:;<=>?＠\[\\\]^_`{|}~]*$/i)
+  ) {
     address[0].style.backgroundColor = "#9cb6e6";
     errText[4].textContent = "";
   } else {
