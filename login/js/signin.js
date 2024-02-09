@@ -30,7 +30,6 @@ let member = document.getElementById("member");
 //sort機能 セレクトボックス
 let sort = document.getElementById("sort");
 
-
 //年齢だけ自動入力
 birthdate[0].addEventListener("change", (e) => {
   // console.log("カレンダーデータ取得="+e.target.value);
@@ -102,9 +101,7 @@ function signUp() {
   }
 
   //住所バリデーションチェック
-  if (
-    !address[0].value.match(/^[!"#$%&'()\*\+\-\.,\/:;<=>?＠\[\\\]^_`{|}~]*$/i)
-  ) {
+  if (!address[0].value.match(/^[ -/:-@[-´{-~]*$/)) {
     address[0].style.backgroundColor = "#9cb6e6";
     errText[4].textContent = "";
   } else {
@@ -158,78 +155,12 @@ function signUp() {
 
 //sort.json確認
 // fetch('../sort.json')
-//   .then(response => {
-//     return response.json();
-//   })
-//   .then(data => {
-//     console.log(data);
-//   })
-//   .catch(error => {
-//     console.log("失敗しました");
-//   });
-
-//ファイル読み込み
-// fetch("../sort.json")
-//   .then((res) => res.json())
-//   .then((json_data) => jsonArray(json_data))
-//   .catch((error) => console.log(error));
-
-//jsonデータ
-// const jsonArray = (jsonObj) => {
-//   const data = jsonObj; //変数化
-//   console.log(data); //確認用
-
-// とりあえずHTMLに表示
-// for (let i = 0; i < data.length; i++) {
-//   member.insertAdjacentHTML(
-//     "beforeend",
-//     `<tr><td>${"ID発行中"}</td>
-//      <td>${data[i].employee_name}</td>
-//      <td>${data[i].furigana}</td>
-//      <td>${data[i].date_of_birth}</td>
-//      <td>${data[i].age}</td>
-//      <td>${data[i].hire_date}</td>
-//      <td>${data[i].address}</td>
-//      <td>${data[i].phone_number}</td>
-//      <td>${data[i].department}</td></tr>`
-//   );
-// }
-
-// ソート機能
-// function sortBtn() {
-//年齢昇順
-//     if (sort.value == ageUp)
-//       let sort_agaUp = data.sort(x, y) => {return x.age - y.age;}
-//   }
-
-// };
-
-// .then((res) => {
-//   for (let i = 0; i < res.length; i++) {
-//     member.insertAdjacentHTML(
-//       "beforeend",
-//       `<tr><td>${"ID発行中"}</td>
-//       <td>${res[i].employee_name}</td>
-//       <td>${res[i].furigana}</td>
-//       <td>${res[i].date_of_birth}</td>
-//       <td>${res[i].age}</td>
-//       <td>${res[i].hire_date}</td>
-//       <td>${res[i].address}</td>
-//       <td>${res[i].phone_number}</td>
-//       <td>${res[i].department}</td></tr>`
-//     );
-//   }
+// .then(response => {
+//   return response.json();
 // })
-
-// res.sort(function sortBtn() {
-//   console.log(sort.value);
-// });
-
-//年齢昇順
-// let sortAU = res.sort((x, y) => {
-//   return x.age - y.age;
-// });
-//年齢降順
-// let sortDW = res.sort((x, y) => {
-//   return y.age - x.age;
+// .then(data => {
+//   console.log(data);
+// })
+// .catch(error => {
+//   console.log("失敗しました");
 // });
