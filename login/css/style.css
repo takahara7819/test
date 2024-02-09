@@ -97,3 +97,15 @@ section.container {
   justify-content: space-around;
   gap: 6px;
 }
+
+#sort {
+  padding: 3px;
+  margin-bottom: 20px;
+}
+button.sortBt {
+  display: inline;
+  width: 100px;
+  margin: 0;
+  background-color: #ccc;
+  color: #000;
+}

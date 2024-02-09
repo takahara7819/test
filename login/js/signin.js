@@ -17,6 +17,56 @@ let Department = document.getElementsByName("Department");
 //ブーリアンチェック用
 let isChek = true;
 
+//今日の年月日抽出
+let today = new Date();
+let year = today.getFullYear();
+let month = today.getMonth() + 1;
+let day = today.getDate();
+//tableに誕生日記入
+let bYMD = "";
+//tableに記入用
+let member = document.getElementById("member");
+
+//sort機能 セレクトボックス
+let sort = document.getElementById("sort");
+
+
+//年齢だけ自動入力
+birthdate[0].addEventListener("change", (e) => {
+  // console.log("カレンダーデータ取得="+e.target.value);
+
+  //カレンダーの年月日抽出
+  let data = new Date(e.target.value);
+  let Cyear = data.getFullYear();
+  let Cmonth = data.getMonth() + 1;
+  let Cday = data.getDate();
+  // 生年月日(年月日表示)
+  bYMD = Cyear + "年" + Cmonth + "月" + Cday + "日";
+
+  //今年の誕生日
+  let thisYearsBirthday = new Date(today.getFullYear(), Cmonth, Cday);
+  //仮年齢
+  let ageData = today.getFullYear() - Cyear;
+  console.log(ageData);
+  //年齢計算+結果を記入
+  if (year >= Cyear) {
+    if (month > Cmonth) {
+      age[0].value = ageData;
+    } else if (month == Cmonth) {
+      if (day >= Cday) {
+        age[0].value = ageData;
+      } else if (day < Cday) {
+        age[0].value = ageData - 1;
+      }
+    } else if (month < Cmonth) {
+      age[0].value = ageData - 1;
+    }
+  } else {
+    age[0].value = ageData;
+  }
+});
+
+//登録記入画面のバリデーションチェック+表に追加
 function signUp() {
   let errText = document.getElementsByClassName("msg");
 
@@ -40,27 +90,6 @@ function signUp() {
     kana[0].style.backgroundColor = "#9cb6e6";
     errText[1].textContent = "";
   }
-
-  // 生年月日データ分け
-  let date = birthdate[0].valueAsDate;
-  let year = date.getFullYear();
-  let month = date.getMonth() + 1;
-  let day = date.getDate();
-  // 生年月日(年月日表示)
-  let bYMD = year + "年" + month + "月" + day + "日";
-
-  //年齢計算
-  function getAge(bYMD) {
-    let today = new Date();
-    let thisYearsBirthday = new Date(today.getFullYear(), month, date);
-    let nowAge = today.getFullYear() - year;
-
-    if (today < thisYearsBirthday) {
-      nowAge--;
-    }
-    return nowAge;
-  }
-  age[0].value = getAge(bYMD);
 
   //年齢バリデーションチェック
   if (!age[0].value.match(/^[0-9]+$/)) {
@@ -112,12 +141,11 @@ function signUp() {
 
   // tableに記入
   if (isChek) {
-    let member = document.getElementById("member");
     member.insertAdjacentHTML(
       "beforeend",
       `<tr><td>${"ID発行中"}</td>
       <td>${name[0].value}</td>
-      <td>${kana[0].valu}</td>
+      <td>${kana[0].value}</td>
       <td>${bYMD}</td>
       <td>${age[0].value}</td>
       <td>${nYMD}</td>
@@ -127,3 +155,81 @@ function signUp() {
     );
   }
 }
+
+//sort.json確認
+// fetch('../sort.json')
+//   .then(response => {
+//     return response.json();
+//   })
+//   .then(data => {
+//     console.log(data);
+//   })
+//   .catch(error => {
+//     console.log("失敗しました");
+//   });
+
+//ファイル読み込み
+// fetch("../sort.json")
+//   .then((res) => res.json())
+//   .then((json_data) => jsonArray(json_data))
+//   .catch((error) => console.log(error));
+
+//jsonデータ
+// const jsonArray = (jsonObj) => {
+//   const data = jsonObj; //変数化
+//   console.log(data); //確認用
+
+// とりあえずHTMLに表示
+// for (let i = 0; i < data.length; i++) {
+//   member.insertAdjacentHTML(
+//     "beforeend",
+//     `<tr><td>${"ID発行中"}</td>
+//      <td>${data[i].employee_name}</td>
+//      <td>${data[i].furigana}</td>
+//      <td>${data[i].date_of_birth}</td>
+//      <td>${data[i].age}</td>
+//      <td>${data[i].hire_date}</td>
+//      <td>${data[i].address}</td>
+//      <td>${data[i].phone_number}</td>
+//      <td>${data[i].department}</td></tr>`
+//   );
+// }
+
+// ソート機能
+// function sortBtn() {
+//年齢昇順
+//     if (sort.value == ageUp)
+//       let sort_agaUp = data.sort(x, y) => {return x.age - y.age;}
+//   }
+
+// };
+
+// .then((res) => {
+//   for (let i = 0; i < res.length; i++) {
+//     member.insertAdjacentHTML(
+//       "beforeend",
+//       `<tr><td>${"ID発行中"}</td>
+//       <td>${res[i].employee_name}</td>
+//       <td>${res[i].furigana}</td>
+//       <td>${res[i].date_of_birth}</td>
+//       <td>${res[i].age}</td>
+//       <td>${res[i].hire_date}</td>
+//       <td>${res[i].address}</td>
+//       <td>${res[i].phone_number}</td>
+//       <td>${res[i].department}</td></tr>`
+//     );
+//   }
+// })
+
+// res.sort(function sortBtn() {
+//   console.log(sort.value);
+// });
+
+//年齢昇順
+// let sortAU = res.sort((x, y) => {
+//   return x.age - y.age;
+// });
+//年齢降順
+// let sortDW = res.sort((x, y) => {
+//   return y.age - x.age;
+// });

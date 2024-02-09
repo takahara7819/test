@@ -12,6 +12,14 @@
     <body>
         <main class="container">
             <h1>一覧画面</h1>
+            <select id="sort">
+                <option value="nameDf">名前 / 通常</option>
+                <option value="nameUp">名前 / 昇順</option>
+                <option value="nameDw">名前 / 降順</option>
+                <option value="ageUp">年齢 / 昇順</option>
+                <option value="ageDw">年齢 / 降順</option>
+            </select>
+            <button class="sortBt" onclick="sortBtn()">表示</button>
             <table id="member">
                 <tr>
                     <th>IDナンバー</th>
@@ -25,23 +33,23 @@
                     <th>所属部署</th>
                 </tr>
                 <tr>
-                    <td>12345</td>
+                    <td>xxxxx</td>
                     <td>田中太郎</td>
                     <td>たなかたろう</td>
-                    <td>0000/0/0</td>
+                    <td>0000年0月0日</td>
                     <td>23</td>
-                    <td>0000/0/0</td>
+                    <td>0000年0月0日</td>
                     <td>ダミー</td>
                     <td>090-xxxx-xxxx</td>
                     <td>ダミー</td>
                 </tr>
                 <tr>
-                    <td>12345</td>
+                    <td>xxxxx</td>
                     <td>田中太郎</td>
                     <td>たなかたろう</td>
-                    <td>0000/0/0</td>
+                    <td>0000年0月0日</td>
                     <td>23</td>
-                    <td>0000/0/0</td>
+                    <td>0000年0月0日</td>
                     <td>ダミー</td>
                     <td>090-xxxx-xxxx</td>
                     <td>ダミー</td>
