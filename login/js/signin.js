@@ -149,7 +149,9 @@ function signUp() {
       <td>${nYMD}</td>
       <td>${address[0].value}</td>
       <td>${tel[0].value}</td>
-      <td>${Department[0].value}</td></tr>`
+      <td>${Department[0].value}</td>
+      <td><button class="textBt" onclick="textBtn()">編集</button></td>
+      </tr>`
     );
   }
 }
@@ -178,7 +180,9 @@ async function clickBtn() {
          <td>${getApi[i].hire_date}</td>
          <td>${getApi[i].address}</td>
          <td>${getApi[i].phone_number}</td>
-         <td>${getApi[i].department}</td></tr>`
+         <td>${getApi[i].department}</td>
+         <td><button class="textBt" onclick="textBtn()">編集</button></td>
+         </tr>`
     );
   }
 }
@@ -230,7 +234,9 @@ async function sortBtn() {
          <td>${sortApi[s].hire_date}</td>
          <td>${sortApi[s].address}</td>
          <td>${sortApi[s].phone_number}</td>
-         <td>${sortApi[s].department}</td></tr>`
+         <td>${sortApi[s].department}</td>
+         <td><button class="textBt" onclick="textBtn()">編集</button></td>
+         </tr>`
     );
   }
 }
@@ -256,7 +262,9 @@ async function searchBtn() {
            <td>${searchApi[se].hire_date}</td>
            <td>${searchApi[se].address}</td>
            <td>${searchApi[se].phone_number}</td>
-           <td>${searchApi[se].department}</td></tr>`
+           <td>${searchApi[se].department}</td>
+           <td><button class="textBt" onclick="textBtn()">編集</button></td>
+           </tr>`
       );
     }
   }

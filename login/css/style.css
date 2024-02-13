@@ -27,7 +27,7 @@ h1 {
 
 .container {
   background-color: #fff;
-  max-width: 1100px;
+  max-width: 80%;
   margin: 10px auto;
   padding: 10px;
   border-radius: 3px;
@@ -49,7 +49,7 @@ h1 {
 button {
   display: block;
   width: 300px;
-  margin: 10px auto;
+  margin: 30px auto;
   background-color: #41a941;
   color: #fff;
   text-align: center;
@@ -106,6 +106,15 @@ button.sortBt {
   display: inline;
   width: 100px;
   margin: 0 20px 0 0;
+  background-color: #ccc;
+  color: #000;
+}
+/*-------------------------
+  編集ボタン
+-------------------------*/
+button.textBt {
+  display: inline;
+  width: 100px;
   background-color: #ccc;
   color: #000;
 }
