@@ -16,7 +16,7 @@ let nyshyaday = document.getElementsByName("day");
 let Department = document.getElementsByName("Department");
 //ブーリアンチェック用
 let isChek = true;
-
+//-----------------------
 //今日の年月日抽出
 let today = new Date();
 let year = today.getFullYear();
@@ -26,14 +26,15 @@ let day = today.getDate();
 let bYMD = "";
 //tableに記入用
 let member = document.getElementById("member");
-
+//-----------------------
 //sort機能 セレクトボックス
 let sort = document.getElementById("sort");
+//絞り込み機能 textボックス
+let search_text = document.getElementById("search_text");
+//-----------------------
 
 //年齢だけ自動入力
 birthdate[0].addEventListener("change", (e) => {
-  // console.log("カレンダーデータ取得="+e.target.value);
-
   //カレンダーの年月日抽出
   let data = new Date(e.target.value);
   let Cyear = data.getFullYear();
@@ -231,5 +232,32 @@ async function sortBtn() {
          <td>${sortApi[s].phone_number}</td>
          <td>${sortApi[s].department}</td></tr>`
     );
+  }
+}
+
+//絞り込み機能
+async function searchBtn() {
+  while (member.firstChild) {
+    member.removeChild(member.firstChild);
+  }
+  const searchApi = await callApi(); //json再取得
+  const searchV = search_text.value; //検索ワード
+
+  for (let se = 0; se < searchApi.length; se++) {
+    if (searchApi[se].employee_name.indexOf(searchV) > -1) {
+      //部分一致のみ表示
+      member.insertAdjacentHTML(
+        "beforeend",
+        `<tr><td>${"ID発行中"}</td>
+           <td>${searchApi[se].employee_name}</td>
+           <td>${searchApi[se].furigana}</td>
+           <td>${searchApi[se].date_of_birth}</td>
+           <td>${searchApi[se].age}</td>
+           <td>${searchApi[se].hire_date}</td>
+           <td>${searchApi[se].address}</td>
+           <td>${searchApi[se].phone_number}</td>
+           <td>${searchApi[se].department}</td></tr>`
+      );
+    }
   }
 }
