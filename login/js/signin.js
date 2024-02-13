@@ -101,14 +101,14 @@ function signUp() {
   }
 
   //住所バリデーションチェック
-  if (!address[0].value.match(/^[ -/:-@[-´{-~]*$/)) {
-    address[0].style.backgroundColor = "#9cb6e6";
-    errText[4].textContent = "";
-  } else {
-    address[0].style.backgroundColor = "red";
-    errText[4].textContent = "記号NG";
-    isChek = false;
-  }
+  // if (!address[0].value.match(/^[ -/:-@[-´{-~]*$/)) {
+  //   address[0].style.backgroundColor = "#9cb6e6";
+  //   errText[4].textContent = "";
+  // } else {
+  //   address[0].style.backgroundColor = "red";
+  //   errText[4].textContent = "記号NG";
+  //   isChek = false;
+  // }
 
   //電話番号バリデーションチェック
   if (!tel[0].value.match(/^[0-9]+$/)) {
