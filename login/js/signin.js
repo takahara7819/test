@@ -164,3 +164,82 @@ function signUp() {
 // .catch(error => {
 //   console.log("失敗しました");
 // });
+
+// ファイル読み込み
+fetch("../sort.json")
+  .then((res) => res.json())
+  .then((json_data) => jsonArray(json_data))
+  .catch((error) => console.log(error));
+
+//let data = jsonObj; これなに
+
+//変数化を外に取り出したいけどこれでいいのかな
+let data = 0;
+
+//json
+// let jsonArray = (jsonObj) => {  //アロー関数混乱するから書き換えてる
+let jsonArray = function (jsonObj) {
+  data = jsonObj;
+  // let data = jsonObj; //変数化
+  // console.log(data); //確認用
+
+  // とりあえずHTMLに表示
+  for (let i = 0; i < data.length; i++) {
+    member.insertAdjacentHTML(
+      "beforeend",
+      `<tr><td>${"ID発行中"}</td>
+       <td>${data[i].employee_name}</td>
+       <td>${data[i].furigana}</td>
+       <td>${data[i].date_of_birth}</td>
+       <td>${data[i].age}</td>
+       <td>${data[i].hire_date}</td>
+       <td>${data[i].address}</td>
+       <td>${data[i].phone_number}</td>
+       <td>${data[i].department}</td></tr>`
+    );
+  }
+};
+
+//ボタンを押したら要素を削除→書き換え
+function sortBtn() {
+  while (member.firstChild) {
+    member.removeChild(member.firstChild);
+  }
+
+  function compareFunc(x, y) {
+    //名前通常
+    if (sort.value == "nameDf") {
+    }
+    //名前昇順
+    if (sort.value == "nameUp") {
+      return x.furigana.localeCompare(y.furigana, "ja");
+    }
+    //名前降順
+    if (sort.value == "nameDw") {
+      return y.furigana.localeCompare(x.furigana, "ja");
+    }
+    //年齢昇順
+    if (sort.value == "ageUp") {
+      return x.age - y.age;
+    }
+    //年齢降順
+    if (sort.value == "ageDw") {
+      return y.age - x.age;
+    }
+  }
+  data.sort(compareFunc);
+  for (let s = 0; s < data.length; s++) {
+    member.insertAdjacentHTML(
+      "beforeend",
+      `<tr><td>${"ID発行中"}</td>
+     <td>${data[s].employee_name}</td>
+     <td>${data[s].furigana}</td>
+     <td>${data[s].date_of_birth}</td>
+     <td>${data[s].age}</td>
+     <td>${data[s].hire_date}</td>
+     <td>${data[s].address}</td>
+     <td>${data[s].phone_number}</td>
+     <td>${data[s].department}</td></tr>`
+    );
+  }
+}
