@@ -254,7 +254,8 @@ async function searchBtn() {
       //部分一致のみ表示
       member.insertAdjacentHTML(
         "beforeend",
-        `<tr><td>${"ID発行中"}</td>
+        `<tr>
+           <td>${"ID発行中"}</td>
            <td>${searchApi[se].employee_name}</td>
            <td>${searchApi[se].furigana}</td>
            <td>${searchApi[se].date_of_birth}</td>
@@ -269,3 +270,10 @@ async function searchBtn() {
     }
   }
 }
+
+//編集機能
+let textBt = document.getElementsByClassName("textBt"); //td buttonタグ
+// function textBtn() {
+//   let memberBox = member;
+//   console.log(memberBox);
+// }
