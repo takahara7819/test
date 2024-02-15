@@ -24,8 +24,6 @@ let month = today.getMonth() + 1;
 let day = today.getDate();
 //tableに誕生日記入
 let bYMD = "";
-//tableに記入用
-let member = document.getElementById("member");
 //-----------------------
 //sort機能 セレクトボックス
 let sort = document.getElementById("sort");
@@ -47,7 +45,6 @@ birthdate[0].addEventListener("change", (e) => {
   let thisYearsBirthday = new Date(today.getFullYear(), Cmonth, Cday);
   //仮年齢
   let ageData = today.getFullYear() - Cyear;
-  console.log(ageData);
   //年齢計算+結果を記入
   if (year >= Cyear) {
     if (month > Cmonth) {
@@ -150,7 +147,7 @@ function signUp() {
       <td>${address[0].value}</td>
       <td>${tel[0].value}</td>
       <td>${Department[0].value}</td>
-      <td><button class="textBt" onclick="textBtn()">編集</button></td>
+      <td><input type="button" class="textBt" value="編集" onclick="textBtn(this)"></td>
       </tr>`
     );
   }
@@ -166,7 +163,6 @@ async function callApi() {
 //jsonをHTMLに表示
 async function clickBtn() {
   const getApi = await callApi();
-  console.log(getApi);
 
   // ボタン押す前にも表示させたい
   for (let i = 0; i < getApi.length; i++) {
@@ -181,7 +177,7 @@ async function clickBtn() {
          <td>${getApi[i].address}</td>
          <td>${getApi[i].phone_number}</td>
          <td>${getApi[i].department}</td>
-         <td><button class="textBt" onclick="textBtn()">編集</button></td>
+         <td><input type="button" class="textBt" value="編集" onclick="textBtn(this)"></td>
          </tr>`
     );
   }
@@ -235,7 +231,7 @@ async function sortBtn() {
          <td>${sortApi[s].address}</td>
          <td>${sortApi[s].phone_number}</td>
          <td>${sortApi[s].department}</td>
-         <td><button class="textBt" onclick="textBtn()">編集</button></td>
+         <td><input type="button" class="textBt" value="編集" onclick="textBtn(this)"></td>
          </tr>`
     );
   }
@@ -264,7 +260,7 @@ async function searchBtn() {
            <td>${searchApi[se].address}</td>
            <td>${searchApi[se].phone_number}</td>
            <td>${searchApi[se].department}</td>
-           <td><button class="textBt" onclick="textBtn()">編集</button></td>
+           <td><input type="button" class="textBt" value="編集" onclick="textBtn(this)"></td>
            </tr>`
       );
     }
@@ -272,8 +268,39 @@ async function searchBtn() {
 }
 
 //編集機能
-let textBt = document.getElementsByClassName("textBt"); //td buttonタグ
-// function textBtn() {
-//   let memberBox = member;
-//   console.log(memberBox);
-// }
+let member = document.getElementById("member"); //table<tr が入ってる
+let table_tr = new Array(0); //配列化
+
+//memberの情報をtable_trに配列として収納
+function memberBox() {
+  for (let m = 0; m < member.rows.length; m++) {
+    record = new Array(0);
+    for (let j = 1; j < member.rows[m].cells.length - 1; j++) {
+      record.push(member.rows[m].cells[j].innerHTML);
+    }
+    table_tr.push(record);
+  }
+}
+
+//ボタンを押した行を編集モードにする
+let textBtn = function (button) {
+  let changeIndex = button.closest("tr").rowIndex; //ボタンを押した行番号
+  let changeRow = member.rows[changeIndex - 1]; //ボタンを押した行全体
+  let td_element = changeRow.querySelectorAll("td"); //tdタグをinput=textに変換
+  let textBt = document.getElementsByClassName("textBt");
+
+  //for文でtdを個別選択→書き換え
+  for (let index = 1; index < td_element.length - 1; index++) {
+    let td = td_element[index].innerText; //tdテキスト取得
+    let tdsub = td_element[index]; //書き換え用
+    tdsub.innerHTML =
+      '<input type="text" class="tdsub_i" value="test"></input>';
+
+    let tdsub_i = tdsub.querySelector("input");
+    tdsub_i.value = td;
+    console.log(textBt.value);
+  }
+
+  // console.log("ボタンの中=" + button.value); //文字はvalueで書き換えられそう
+  memberBox();
+};
