@@ -112,7 +112,7 @@ button.sortBt {
 /*-------------------------
   編集ボタン
 -------------------------*/
-button.textBt {
+button.m_btn {
   display: inline;
   width: 100px;
   background-color: #ccc;

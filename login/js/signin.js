@@ -139,15 +139,15 @@ function signUp() {
     member.insertAdjacentHTML(
       "beforeend",
       `<tr><td>${"ID発行中"}</td>
-      <td>${name[0].value}</td>
-      <td>${kana[0].value}</td>
-      <td>${bYMD}</td>
-      <td>${age[0].value}</td>
-      <td>${nYMD}</td>
-      <td>${address[0].value}</td>
-      <td>${tel[0].value}</td>
-      <td>${Department[0].value}</td>
-      <td><input type="button" class="textBt" value="編集" onclick="textBtn(this)"></td>
+      <td class="tdText">${name[0].value}</td>
+      <td class="tdText">${kana[0].value}</td>
+      <td class="tdText">${bYMD}</td>
+      <td class="tdText">${age[0].value}</td>
+      <td class="tdText">${nYMD}</td>
+      <td class="tdText">${address[0].value}</td>
+      <td class="tdText">${tel[0].value}</td>
+      <td class="tdText">${Department[0].value}</td>
+      <td><button class="m_btn">編集</button></td>
       </tr>`
     );
   }
@@ -169,16 +169,16 @@ async function clickBtn() {
     member.insertAdjacentHTML(
       "beforeend",
       `<tr><td>${"ID発行中"}</td>
-         <td>${getApi[i].employee_name}</td>
-         <td>${getApi[i].furigana}</td>
-         <td>${getApi[i].date_of_birth}</td>
-         <td>${getApi[i].age}</td>
-         <td>${getApi[i].hire_date}</td>
-         <td>${getApi[i].address}</td>
-         <td>${getApi[i].phone_number}</td>
-         <td>${getApi[i].department}</td>
-         <td><input type="button" class="textBt" value="編集" onclick="textBtn(this)"></td>
-         </tr>`
+        <td class="tdText">${getApi[i].employee_name}</td>
+        <td class="tdText">${getApi[i].furigana}</td>
+        <td class="tdText">${getApi[i].date_of_birth}</td>
+        <td class="tdText">${getApi[i].age}</td>
+        <td class="tdText">${getApi[i].hire_date}</td>
+        <td class="tdText">${getApi[i].address}</td>
+        <td class="tdText">${getApi[i].phone_number}</td>
+        <td class="tdText">${getApi[i].department}</td>
+        <td><button class="m_btn">編集</button></td>
+        </tr>`
     );
   }
 }
@@ -223,16 +223,16 @@ async function sortBtn() {
     member.insertAdjacentHTML(
       "beforeend",
       `<tr><td>${"ID発行中"}</td>
-         <td>${sortApi[s].employee_name}</td>
-         <td>${sortApi[s].furigana}</td>
-         <td>${sortApi[s].date_of_birth}</td>
-         <td>${sortApi[s].age}</td>
-         <td>${sortApi[s].hire_date}</td>
-         <td>${sortApi[s].address}</td>
-         <td>${sortApi[s].phone_number}</td>
-         <td>${sortApi[s].department}</td>
-         <td><input type="button" class="textBt" value="編集" onclick="textBtn(this)"></td>
-         </tr>`
+        <td class="tdText">${sortApi[s].employee_name}</td>
+        <td class="tdText">${sortApi[s].furigana}</td>
+        <td class="tdText">${sortApi[s].date_of_birth}</td>
+        <td class="tdText">${sortApi[s].age}</td>
+        <td class="tdText">${sortApi[s].hire_date}</td>
+        <td class="tdText">${sortApi[s].address}</td>
+        <td class="tdText">${sortApi[s].phone_number}</td>
+        <td class="tdText">${sortApi[s].department}</td>
+        <td><button class="m_btn">編集</button></td>
+        </tr>`
     );
   }
 }
@@ -251,17 +251,17 @@ async function searchBtn() {
       member.insertAdjacentHTML(
         "beforeend",
         `<tr>
-           <td>${"ID発行中"}</td>
-           <td>${searchApi[se].employee_name}</td>
-           <td>${searchApi[se].furigana}</td>
-           <td>${searchApi[se].date_of_birth}</td>
-           <td>${searchApi[se].age}</td>
-           <td>${searchApi[se].hire_date}</td>
-           <td>${searchApi[se].address}</td>
-           <td>${searchApi[se].phone_number}</td>
-           <td>${searchApi[se].department}</td>
-           <td><input type="button" class="textBt" value="編集" onclick="textBtn(this)"></td>
-           </tr>`
+          <td>${"ID発行中"}</td>
+          <td class="tdText">${searchApi[se].employee_name}</td>
+          <td class="tdText">${searchApi[se].furigana}</td>
+          <td class="tdText">${searchApi[se].date_of_birth}</td>
+          <td class="tdText">${searchApi[se].age}</td>
+          <td class="tdText">${searchApi[se].hire_date}</td>
+          <td class="tdText">${searchApi[se].address}</td>
+          <td class="tdText">${searchApi[se].phone_number}</td>
+          <td class="tdText">${searchApi[se].department}</td>
+          <td><button class="m_btn">編集</button></td>
+          </tr>`
       );
     }
   }
@@ -271,7 +271,7 @@ async function searchBtn() {
 let member = document.getElementById("member"); //table<tr が入ってる
 let table_tr = new Array(0); //配列化
 
-//memberの情報をtable_trに配列として収納
+//tbody id="member"の情報をtable_trに配列として収納
 function memberBox() {
   for (let m = 0; m < member.rows.length; m++) {
     record = new Array(0);
@@ -281,26 +281,19 @@ function memberBox() {
     table_tr.push(record);
   }
 }
+memberBox();
 
-//ボタンを押した行を編集モードにする
-let textBtn = function (button) {
-  let changeIndex = button.closest("tr").rowIndex; //ボタンを押した行番号
-  let changeRow = member.rows[changeIndex - 1]; //ボタンを押した行全体
-  let td_element = changeRow.querySelectorAll("td"); //tdタグをinput=textに変換
-  let textBt = document.getElementsByClassName("textBt");
+// function btn(e) {
+//   console.log(e.target.innerHTML);
+//   console.log("テスト");
+// }
 
-  //for文でtdを個別選択→書き換え
-  for (let index = 1; index < td_element.length - 1; index++) {
-    let td = td_element[index].innerText; //tdテキスト取得
-    let tdsub = td_element[index]; //書き換え用
-    tdsub.innerHTML =
-      '<input type="text" class="tdsub_i" value="test"></input>';
+let getId = document.getElementsByClassName("m_btn");
+console.log(getId);
+console.log(getId.length);
 
-    let tdsub_i = tdsub.querySelector("input");
-    tdsub_i.value = td;
-    console.log(textBt.value);
-  }
-
-  // console.log("ボタンの中=" + button.value); //文字はvalueで書き換えられそう
-  memberBox();
-};
+for (let i = 0; i < getId.length; i++) {
+  console.log(i);
+  console.log(getId.length);
+  // getId[i].addEventListener('click', test);
+}
