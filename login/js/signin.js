@@ -16,6 +16,7 @@ let nyshyaday = document.getElementsByName("day");
 let Department = document.getElementsByName("Department");
 //ブーリアンチェック用
 let isChek = true;
+let btnChek = true;
 //-----------------------
 //今日の年月日抽出
 let today = new Date();
@@ -29,6 +30,10 @@ let bYMD = "";
 let sort = document.getElementById("sort");
 //絞り込み機能 textボックス
 let search_text = document.getElementById("search_text");
+//-----------------------
+//編集機能
+let parent; //編集選択した行全体
+let getId = document.getElementsByClassName("m_btn"); //編集ボタン
 //-----------------------
 
 //年齢だけ自動入力
@@ -184,12 +189,17 @@ async function clickBtn() {
 
   //編集機能 ボタン選択
   function test(e) {
-    console.log(e.target.innerHTML);
     e.target.innerHTML = "確定";
+
+    parent = e.target.closest("tr");
+    let td = parent.querySelectorAll("td");
+    for (let i = 1; i < td.length - 1; i++) {
+      let td_text = td[i].innerHTML;
+      td[i].innerHTML = `<input type="text" value="${td_text}"></input>`;
+    }
   }
-  let getId = document.getElementsByClassName("m_btn");
   for (let i = 0; i < getId.length; i++) {
-    getId[i].addEventListener('click', test);
+    getId[i].addEventListener("click", test);
   }
 }
 clickBtn();
@@ -245,6 +255,14 @@ async function sortBtn() {
         </tr>`
     );
   }
+  //編集機能 ボタン選択
+  function test(e) {
+    console.log(e.target.innerHTML);
+    e.target.innerHTML = "確定";
+  }
+  for (let i = 0; i < getId.length; i++) {
+    getId[i].addEventListener("click", test);
+  }
 }
 
 //絞り込み機能
@@ -275,6 +293,14 @@ async function searchBtn() {
       );
     }
   }
+  //編集機能 ボタン選択
+  function test(e) {
+    console.log(e.target.innerHTML);
+    e.target.innerHTML = "確定";
+  }
+  for (let i = 0; i < getId.length; i++) {
+    getId[i].addEventListener("click", test);
+  }
 }
 
 //編集機能
@@ -292,4 +318,3 @@ function memberBox() {
   }
 }
 memberBox();
-
