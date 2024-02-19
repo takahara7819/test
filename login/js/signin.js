@@ -181,6 +181,16 @@ async function clickBtn() {
         </tr>`
     );
   }
+
+  //編集機能 ボタン選択
+  function test(e) {
+    console.log(e.target.innerHTML);
+    e.target.innerHTML = "確定";
+  }
+  let getId = document.getElementsByClassName("m_btn");
+  for (let i = 0; i < getId.length; i++) {
+    getId[i].addEventListener('click', test);
+  }
 }
 clickBtn();
 
@@ -283,17 +293,3 @@ function memberBox() {
 }
 memberBox();
 
-// function btn(e) {
-//   console.log(e.target.innerHTML);
-//   console.log("テスト");
-// }
-
-let getId = document.getElementsByClassName("m_btn");
-console.log(getId);
-console.log(getId.length);
-
-for (let i = 0; i < getId.length; i++) {
-  console.log(i);
-  console.log(getId.length);
-  // getId[i].addEventListener('click', test);
-}
