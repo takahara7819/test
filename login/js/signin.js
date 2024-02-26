@@ -34,6 +34,7 @@ let search_text = document.getElementById("search_text");
 //編集機能
 let parent; //編集選択した行全体
 let getId = document.getElementsByClassName("m_btn"); //編集ボタン
+let tdText = document.getElementsByClassName("tdText");
 //-----------------------
 
 //年齢だけ自動入力
@@ -192,16 +193,18 @@ async function clickBtn() {
     parent = e.target.closest("tr");
     let td = parent.querySelectorAll("td");
 
-    //編集
+    //編集モード
     if (e.target.innerHTML == "編集") {
       e.target.innerHTML = "確定";
       btnChek = false;
       console.log(btnChek);
 
-      for (let i = 1; i < td.length - 1; i++) {
+      for (let i = 0; i < td.length -1; i++) {
         let td_text = td[i].innerHTML;
-        td[i].innerHTML =
-          `<input type="text" class="input_text" value="${td_text}"></input>`;
+        if (!i == 0) {
+          td[i].innerHTML =
+            `<input type="text" class="input_text" value="${td_text}"></input>`;
+        }
       }
 
       //確定
@@ -210,12 +213,24 @@ async function clickBtn() {
       btnChek = true;
       console.log(btnChek);
 
-      for (let i = 1; i < td.length - 1; i++) {
+      for (let i = 0; i < td.length -1; i++) {
         let input_text = document.getElementsByClassName("input_text");
-        let td_text2 = input_text[i].value;
-        td[i].innerHTML = `${td_text2}`;
+        // console.log(input_text[i].value);
+        console.log(i);
+        if (!i == 0) {
+          let input_i = i - 1;
+
+          console.log("td"+i);
+          console.log("input" + input_i);
+          
+          let td_text2 = input_text[input_i].value;
+
+          console.log(td_text2);
+          console.log(td[i]);
+
+          td[i].innerHTML = `${td_text2}`;
+        }
       }
-      console.log(td_text2);
 
       console.log();
     }
