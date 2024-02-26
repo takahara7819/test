@@ -189,18 +189,28 @@ async function clickBtn() {
 
   //編集機能 ボタン選択
   function test(e) {
-    e.target.innerHTML = "確定";
-
     parent = e.target.closest("tr");
     let td = parent.querySelectorAll("td");
     for (let i = 1; i < td.length - 1; i++) {
       let td_text = td[i].innerHTML;
       td[i].innerHTML = `<input type="text" value="${td_text}"></input>`;
     }
+
+    if (e.target.innerHTML == "編集") {
+      e.target.innerHTML = "確定";
+      btnChek = false;
+      console.log(btnChek);
+    } else if (e.target.innerHTML == "確定") {
+      e.target.innerHTML = "編集";
+      btnChek = true;
+      console.log(btnChek);
+    }
+
   }
   for (let i = 0; i < getId.length; i++) {
     getId[i].addEventListener("click", test);
   }
+
 }
 clickBtn();
 

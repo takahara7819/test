@@ -112,7 +112,7 @@ button.sortBt {
 /*-------------------------
   編集ボタン
 -------------------------*/
-button.m_btn {
+button.m_btn,.k_btn {
   display: inline;
   width: 100px;
   background-color: #ccc;
