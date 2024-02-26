@@ -191,26 +191,38 @@ async function clickBtn() {
   function test(e) {
     parent = e.target.closest("tr");
     let td = parent.querySelectorAll("td");
-    for (let i = 1; i < td.length - 1; i++) {
-      let td_text = td[i].innerHTML;
-      td[i].innerHTML = `<input type="text" value="${td_text}"></input>`;
-    }
 
+    //編集
     if (e.target.innerHTML == "編集") {
       e.target.innerHTML = "確定";
       btnChek = false;
       console.log(btnChek);
+
+      for (let i = 1; i < td.length - 1; i++) {
+        let td_text = td[i].innerHTML;
+        td[i].innerHTML =
+          `<input type="text" class="input_text" value="${td_text}"></input>`;
+      }
+
+      //確定
     } else if (e.target.innerHTML == "確定") {
       e.target.innerHTML = "編集";
       btnChek = true;
       console.log(btnChek);
-    }
 
+      for (let i = 1; i < td.length - 1; i++) {
+        let input_text = document.getElementsByClassName("input_text");
+        let td_text2 = input_text[i].value;
+        td[i].innerHTML = `${td_text2}`;
+      }
+      console.log(td_text2);
+
+      console.log();
+    }
   }
   for (let i = 0; i < getId.length; i++) {
     getId[i].addEventListener("click", test);
   }
-
 }
 clickBtn();
 
@@ -266,13 +278,13 @@ async function sortBtn() {
     );
   }
   //編集機能 ボタン選択
-  function test(e) {
-    console.log(e.target.innerHTML);
-    e.target.innerHTML = "確定";
-  }
-  for (let i = 0; i < getId.length; i++) {
-    getId[i].addEventListener("click", test);
-  }
+  // function test(e) {
+  //   console.log(e.target.innerHTML);
+  //   e.target.innerHTML = "確定";
+  // }
+  // for (let i = 0; i < getId.length; i++) {
+  //   getId[i].addEventListener("click", test);
+  // }
 }
 
 //絞り込み機能
@@ -304,13 +316,13 @@ async function searchBtn() {
     }
   }
   //編集機能 ボタン選択
-  function test(e) {
-    console.log(e.target.innerHTML);
-    e.target.innerHTML = "確定";
-  }
-  for (let i = 0; i < getId.length; i++) {
-    getId[i].addEventListener("click", test);
-  }
+  // function test(e) {
+  //   console.log(e.target.innerHTML);
+  //   e.target.innerHTML = "確定";
+  // }
+  // for (let i = 0; i < getId.length; i++) {
+  //   getId[i].addEventListener("click", test);
+  // }
 }
 
 //編集機能
