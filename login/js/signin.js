@@ -217,13 +217,20 @@ async function clickBtn() {
         input_arr.push(input_text[i].value);
         input_text[i].insertAdjacentHTML(
           "beforebegin",
-          `<div>${input_arr[i]}</div>`
+          `${input_arr[i]}`
         );
-        if (input_arr.length == 8) {
-          member.querySelector("input").remove();
-        }
       }
-      console.log(input_arr);
+      if (input_arr.length == 8) { //inputタグ削除
+        let nodelist = member.querySelectorAll("input");
+        nodelist[0].remove();
+        nodelist[1].remove();
+        nodelist[2].remove();
+        nodelist[3].remove();
+        nodelist[4].remove();
+        nodelist[5].remove();
+        nodelist[6].remove();
+        nodelist[7].remove();
+      }
     }
   }
   for (let i = 0; i < getId.length; i++) {
