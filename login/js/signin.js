@@ -290,14 +290,54 @@ async function sortBtn() {
         </tr>`
     );
   }
-  //編集機能 ボタン選択
-  // function test(e) {
-  //   console.log(e.target.innerHTML);
-  //   e.target.innerHTML = "確定";
-  // }
-  // for (let i = 0; i < getId.length; i++) {
-  //   getId[i].addEventListener("click", test);
-  // }
+    //編集機能 ボタン選択
+    function test(e) {
+      parent = e.target.closest("tr");
+      let td = parent.querySelectorAll("td");
+  
+      //編集モード
+      if (e.target.innerHTML == "編集") {
+        e.target.innerHTML = "確定";
+  
+        for (let i = 0; i < td.length - 1; i++) {
+          let td_text = td[i].innerHTML;
+          if (!i == 0) {
+            td[
+              i
+            ].innerHTML = `<input type="text" class="input_text" value="${td_text}"></input>`;
+          }
+        }
+  
+        //確定モード
+      } else if (e.target.innerHTML == "確定") {
+        e.target.innerHTML = "編集";
+        let input_text = document.getElementsByClassName("input_text");
+        let input_arr = new Array();
+  
+        for (let i = 0; i < td.length - 2; i++) {
+          let td_i = i + 1;
+          input_arr.push(input_text[i].value);
+          input_text[i].insertAdjacentHTML(
+            "beforebegin",
+            `${input_arr[i]}`
+          );
+        }
+        if (input_arr.length == 8) { //inputタグ削除
+          let nodelist = member.querySelectorAll("input");
+          nodelist[0].remove();
+          nodelist[1].remove();
+          nodelist[2].remove();
+          nodelist[3].remove();
+          nodelist[4].remove();
+          nodelist[5].remove();
+          nodelist[6].remove();
+          nodelist[7].remove();
+        }
+      }
+    }
+    for (let i = 0; i < getId.length; i++) {
+      getId[i].addEventListener("click", test);
+    }
 }
 
 //絞り込み機能
@@ -328,14 +368,54 @@ async function searchBtn() {
       );
     }
   }
-  //編集機能 ボタン選択
-  // function test(e) {
-  //   console.log(e.target.innerHTML);
-  //   e.target.innerHTML = "確定";
-  // }
-  // for (let i = 0; i < getId.length; i++) {
-  //   getId[i].addEventListener("click", test);
-  // }
+    //編集機能 ボタン選択
+    function test(e) {
+      parent = e.target.closest("tr");
+      let td = parent.querySelectorAll("td");
+  
+      //編集モード
+      if (e.target.innerHTML == "編集") {
+        e.target.innerHTML = "確定";
+  
+        for (let i = 0; i < td.length - 1; i++) {
+          let td_text = td[i].innerHTML;
+          if (!i == 0) {
+            td[
+              i
+            ].innerHTML = `<input type="text" class="input_text" value="${td_text}"></input>`;
+          }
+        }
+  
+        //確定モード
+      } else if (e.target.innerHTML == "確定") {
+        e.target.innerHTML = "編集";
+        let input_text = document.getElementsByClassName("input_text");
+        let input_arr = new Array();
+  
+        for (let i = 0; i < td.length - 2; i++) {
+          let td_i = i + 1;
+          input_arr.push(input_text[i].value);
+          input_text[i].insertAdjacentHTML(
+            "beforebegin",
+            `${input_arr[i]}`
+          );
+        }
+        if (input_arr.length == 8) { //inputタグ削除
+          let nodelist = member.querySelectorAll("input");
+          nodelist[0].remove();
+          nodelist[1].remove();
+          nodelist[2].remove();
+          nodelist[3].remove();
+          nodelist[4].remove();
+          nodelist[5].remove();
+          nodelist[6].remove();
+          nodelist[7].remove();
+        }
+      }
+    }
+    for (let i = 0; i < getId.length; i++) {
+      getId[i].addEventListener("click", test);
+    }
 }
 
 //編集機能
