@@ -196,43 +196,34 @@ async function clickBtn() {
     //編集モード
     if (e.target.innerHTML == "編集") {
       e.target.innerHTML = "確定";
-      btnChek = false;
-      console.log(btnChek);
 
-      for (let i = 0; i < td.length -1; i++) {
+      for (let i = 0; i < td.length - 1; i++) {
         let td_text = td[i].innerHTML;
         if (!i == 0) {
-          td[i].innerHTML =
-            `<input type="text" class="input_text" value="${td_text}"></input>`;
+          td[
+            i
+          ].innerHTML = `<input type="text" class="input_text" value="${td_text}"></input>`;
         }
       }
 
-      //確定
+      //確定モード
     } else if (e.target.innerHTML == "確定") {
       e.target.innerHTML = "編集";
-      btnChek = true;
-      console.log(btnChek);
+      let input_text = document.getElementsByClassName("input_text");
+      let input_arr = new Array();
 
-      for (let i = 0; i < td.length -1; i++) {
-        let input_text = document.getElementsByClassName("input_text");
-        // console.log(input_text[i].value);
-        console.log(i);
-        if (!i == 0) {
-          let input_i = i - 1;
-
-          console.log("td"+i);
-          console.log("input" + input_i);
-          
-          let td_text2 = input_text[input_i].value;
-
-          console.log(td_text2);
-          console.log(td[i]);
-
-          td[i].innerHTML = `${td_text2}`;
+      for (let i = 0; i < td.length - 2; i++) {
+        let td_i = i + 1;
+        input_arr.push(input_text[i].value);
+        input_text[i].insertAdjacentHTML(
+          "beforebegin",
+          `<div>${input_arr[i]}</div>`
+        );
+        if (input_arr.length == 8) {
+          member.querySelector("input").remove();
         }
       }
-
-      console.log();
+      console.log(input_arr);
     }
   }
   for (let i = 0; i < getId.length; i++) {
