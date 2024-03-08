@@ -62,7 +62,8 @@ button {
 #msgId,
 #msgPs,
 .msg {
-  margin: -20px auto 10px auto;
+  margin-top: -20px;
+  text-align: center;
   color: red;
 }
 /*-------------------------
